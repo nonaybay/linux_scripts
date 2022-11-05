@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+
+from os import system
+from sys import argv
+from time import sleep
+
+
+# function to clean the terminal
+def clear():
+    sleep(0.5)
+    system('clear')
+    sleep(0.5)
+
+
+# options used on <apt>
+opts = [
+    '--assume-yes --fix-broken --fix-missing --no-install-recommends --no-install-suggests',
+    '--list-cleanup',
+]
+
+# <apt> commands
+cmds = [
+    'update {}'.format(opts[1]),
+    'upgrade {}'.format(opts[0]),
+    'full-upgrade {}'.format(opts[0]),
+    'dist-upgrade {}'.format(opts[0]),
+    'autoremove',
+    'clean',
+]
+
+# check packages to install
+checkpkg = (len(argv) > 1)
+
+# if checkpkg is True add the packages to install
+if checkpkg:
+    alist = argv[1:]
+
+    for a in alist:
+        cmds.insert(1, 'install {} {}'.format(a, opts[0]))
+
+# loop
+for c in cmds:
+    clear()
+    system('sudo apt {}'.format(c))
+    clear()
