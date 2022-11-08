@@ -4,5 +4,6 @@ Some scripts to help us on linux-deb based
 ---
 
 ```nnb_system_update ~> update/upgrade your os, install packages```
+
 ```nnb_pubkey ~> add public-keys to allow third repos, (pass the key as arg)```
 
