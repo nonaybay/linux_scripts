@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+
+for n in "$@"; do
+	sudo find . -name "$n" -exec rm -frv {} \;
+done
