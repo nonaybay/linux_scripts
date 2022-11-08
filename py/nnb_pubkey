@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+
+from os import system
+from sys import argv
+from time import sleep
+
+
+system('clear')
+
+
+servers = [
+    'hkp://keyserver.ubuntu.com:80',
+]
+
+
+ckey = (len(argv) > 1)
+
+
+if ckey:
+    keys = argv[1:]
+
+    for k in keys:
+        for s in servers:
+            system('sudo gpg --keyserver {} --recv {}'.format(s, k))
+            system('sudo gpg --export --armor {} | sudo apt-key add -'.format(k))
+
