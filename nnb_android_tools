@@ -22,3 +22,11 @@ sleep 0.5 && echo ""
 curl -# -O https://gist.githubusercontent.com/nonaybay/df1aeb3753610d85020cbf454cfb46e7/raw/4feea357deff45d66dddffb9474a1c7c0cde150f/init
 sleep 0.5 && echo ""
 echo "source ${HOME}/android/init" >> $HOME/.bashrc
+
+clear
+
+source ~/.bashrc
+
+yes | sdkmanager --licenses
+clear
+sdkmanager "build-tools;33.0.0" "ndk-bundle" "platform-tools"
